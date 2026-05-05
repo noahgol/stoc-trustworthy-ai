@@ -4,202 +4,421 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Role of Theory in Trustworthy &amp; Interpretable AI — STOC 2026 Workshop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
   <style>
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    :root {
+      --navy: #1a2b52;
+      --navy-light: #253566;
+      --accent: #2e6cbf;
+      --accent-light: #e8f0fb;
+      --text: #1c1c1c;
+      --text-muted: #5a6270;
+      --border: #d8dce4;
+      --bg: #f7f8fa;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 16px;
-      line-height: 1.7;
-      color: #222;
-      background: #fff;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px 60px;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
     }
 
-    /* Under construction banner */
+    /* Construction banner */
     .banner-construction {
-      background: #fff3cd;
-      border-bottom: 2px solid #e6a817;
+      background: #fffbeb;
+      border-bottom: 1px solid #f0c040;
       text-align: center;
-      padding: 10px 16px;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      color: #7a5100;
-      margin: 0 -24px 32px;
+      padding: 10px 20px;
+      font-family: "Inter", sans-serif;
+      font-size: 13.5px;
+      color: #7a5a00;
+      letter-spacing: 0.01em;
     }
-    .banner-construction strong {
-      font-weight: 700;
-    }
+    .banner-construction strong { font-weight: 600; }
 
+    /* Top nav bar */
+    .topbar {
+      background: var(--navy);
+      padding: 0;
+    }
+    .topbar-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 48px;
+    }
+    .topbar-brand {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .topbar-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .topbar-links a {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+    .topbar-links a:hover { color: #fff; }
+
+    /* Hero header */
     header {
-      border-bottom: 2px solid #333;
-      padding: 36px 0 24px;
-      margin-bottom: 36px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 56px 32px 52px;
+      color: #fff;
     }
-
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .header-eyebrow {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 14px;
+    }
     h1 {
-      font-size: 1.85em;
-      font-weight: bold;
-      line-height: 1.3;
-      margin-bottom: 10px;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 2.15em;
+      font-weight: 600;
+      line-height: 1.25;
+      color: #fff;
+      margin-bottom: 24px;
+      max-width: 780px;
     }
-
-    .workshop-meta {
-      font-size: 1.05em;
-      color: #444;
-      margin-top: 8px;
+    .header-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
     }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-family: "Inter", sans-serif;
+      font-size: 13.5px;
+      color: rgba(255,255,255,0.88);
+    }
+    .pill svg {
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+    .pill a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .pill a:hover { text-decoration: underline; }
 
-    .workshop-meta span {
-      display: inline-block;
-      margin-right: 18px;
+    /* Main content */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 52px 32px 80px;
     }
 
     section {
-      margin-bottom: 40px;
+      margin-bottom: 56px;
     }
 
     h2 {
-      font-size: 1.2em;
-      font-weight: bold;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid #bbb;
-      padding-bottom: 4px;
-      margin-bottom: 16px;
+      color: var(--accent);
+      margin-bottom: 18px;
     }
 
     p {
-      margin-bottom: 14px;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      margin-bottom: 6px;
+      margin-bottom: 16px;
+      color: #2a2a2a;
     }
 
     a {
-      color: #1a4e8c;
+      color: var(--accent);
       text-decoration: none;
     }
+    a:hover { text-decoration: underline; }
 
-    a:hover {
-      text-decoration: underline;
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin-bottom: 56px;
     }
 
     /* Organizers */
-    .organizers-list li {
+    .organizers-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .organizer-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      min-width: 220px;
+    }
+    .organizer-name {
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
       margin-bottom: 4px;
+    }
+    .organizer-email {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .organizer-email a {
+      color: var(--text-muted);
+    }
+    .organizer-email a:hover {
+      color: var(--accent);
+      text-decoration: underline;
     }
 
     /* Schedule */
     .schedule-day {
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
-
-    .schedule-day h3 {
-      font-size: 1em;
-      font-weight: bold;
-      margin-bottom: 8px;
-      color: #111;
+    .day-header {
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 9px 16px;
+      margin-bottom: 10px;
+      letter-spacing: 0.01em;
     }
-
-    .schedule-day ul {
-      padding-left: 20px;
-      list-style: disc;
+    .schedule-items {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
-
-    .schedule-day ul li {
-      margin-bottom: 4px;
+    .schedule-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 15.5px;
     }
-
+    .schedule-item-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .schedule-item-text {
+      flex: 1;
+      font-family: "Source Serif 4", Georgia, serif;
+    }
+    .speaker-link {
+      font-weight: 600;
+    }
     .tbd {
-      color: #888;
-      font-style: italic;
-      font-size: 0.92em;
+      font-family: "Inter", sans-serif;
+      font-size: 12.5px;
+      color: #9aa0ab;
+      font-style: normal;
+      margin-left: 6px;
     }
   </style>
 </head>
 <body>
 
   <div class="banner-construction">
-    <strong>&#9888; This page is under construction.</strong> Details will be updated as they become available.
+    <strong>&#9888; This page is under construction.</strong>&ensp;Details will be updated as they become available.
   </div>
 
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-brand">STOC 2026 Workshop</span>
+      <ul class="topbar-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#organizers">Organizers</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="https://acm-stoc.org/stoc2026/" target="_blank">STOC 2026 ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <header>
-    <h1>The Role of Theory in Trustworthy &amp; Interpretable AI</h1>
-    <div class="workshop-meta">
-      <span>A Workshop at <a href="https://acm-stoc.org/stoc2026/">STOC 2026 / TheoryFest 2026</a></span>
-      <span>June 22–24, 2026</span>
-      <span>Salt Lake City, Utah</span>
+    <div class="header-inner">
+      <div class="header-eyebrow">Workshop at STOC 2026 / TheoryFest 2026</div>
+      <h1>The Role of Theory in Trustworthy &amp; Interpretable AI</h1>
+      <div class="header-pills">
+        <span class="pill">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="white" stroke-width="1.4"/><path d="M1 6.5h14" stroke="white" stroke-width="1.4"/><path d="M5 1.5V4M11 1.5V4" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+          June 22–24, 2026
+        </span>
+        <span class="pill">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1.5C5.51 1.5 3.5 3.51 3.5 6c0 3.75 4.5 8.5 4.5 8.5s4.5-4.75 4.5-8.5c0-2.49-2.01-4.5-4.5-4.5z" stroke="white" stroke-width="1.4"/><circle cx="8" cy="6" r="1.5" stroke="white" stroke-width="1.3"/></svg>
+          Salt Lake City, Utah
+        </span>
+        <span class="pill">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="1.4"/><path d="M8 4.5v4l2.5 2.5" stroke="white" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <a href="https://acm-stoc.org/stoc2026/" target="_blank">STOC 2026 / TheoryFest 2026</a>
+        </span>
+      </div>
     </div>
   </header>
 
-  <section id="overview">
-    <h2>Overview</h2>
-    <p>
-      Recent progress in generative AI&mdash;Large Language Models, Diffusion Models, and beyond&mdash;has
-      been transformative, yet has largely proceeded without engaging with the theoretical foundations
-      developed by the TCS community. At the same time, the deployment of these models has created
-      pressing challenges around trustworthiness: How do we attribute model behavior to training data?
-      How do we verify whether content is AI-generated? How do we align AI systems with the diverse
-      preferences of society? How do we ensure safety and interpretability?
-    </p>
-    <p>
-      We believe theory has a key role to play in addressing these questions. Indeed, a growing body of
-      recent work demonstrates that ideas from cryptography, social choice theory, learning theory, and
-      statistics yield concrete, practical tools for modern AI systems. This workshop will showcase these
-      successes and make the case that trustworthy AI is a natural and fertile area for harnessing
-      theoretical perspective for practical impact.
-    </p>
-  </section>
+  <main>
 
-  <section id="organizers">
-    <h2>Organizers</h2>
-    <ul class="organizers-list">
-      <li>Noah Golowich (<a href="mailto:nzg@cs.utexas.edu">nzg@cs.utexas.edu</a>)</li>
-      <li>Allen Liu (<a href="mailto:cliu568@gmail.com">cliu568@gmail.com</a>)</li>
-      <li>Abhishek Shetty (<a href="mailto:shetty@mit.edu">shetty@mit.edu</a>)</li>
-    </ul>
-  </section>
+    <section id="overview">
+      <h2>Overview</h2>
+      <p>
+        Recent progress in generative AI&mdash;Large Language Models, Diffusion Models, and beyond&mdash;has
+        been transformative, yet has largely proceeded without engaging with the theoretical foundations
+        developed by the TCS community. At the same time, the deployment of these models has created
+        pressing challenges around trustworthiness: How do we attribute model behavior to training data?
+        How do we verify whether content is AI-generated? How do we align AI systems with the diverse
+        preferences of society? How do we ensure safety and interpretability?
+      </p>
+      <p>
+        We believe theory has a key role to play in addressing these questions. Indeed, a growing body of
+        recent work demonstrates that ideas from cryptography, social choice theory, learning theory, and
+        statistics yield concrete, practical tools for modern AI systems. This workshop will showcase these
+        successes and make the case that trustworthy AI is a natural and fertile area for harnessing
+        theoretical perspective for practical impact.
+      </p>
+    </section>
 
-  <section id="schedule">
-    <h2>Schedule</h2>
+    <hr class="divider">
 
-    <div class="schedule-day">
-      <h3>Monday, June 22</h3>
-      <ul>
-        <li>Tutorial <span class="tbd">(time TBD)</span></li>
-        <li>Talk by <a href="https://andrewilyas.com/">Andrew Ilyas</a> <span class="tbd">(time TBD)</span></li>
-      </ul>
-    </div>
+    <section id="organizers">
+      <h2>Organizers</h2>
+      <div class="organizers-grid">
+        <div class="organizer-card">
+          <div class="organizer-name">Noah Golowich</div>
+          <div class="organizer-email"><a href="mailto:nzg@cs.utexas.edu">nzg@cs.utexas.edu</a></div>
+        </div>
+        <div class="organizer-card">
+          <div class="organizer-name">Allen Liu</div>
+          <div class="organizer-email"><a href="mailto:cliu568@gmail.com">cliu568@gmail.com</a></div>
+        </div>
+        <div class="organizer-card">
+          <div class="organizer-name">Abhishek Shetty</div>
+          <div class="organizer-email"><a href="mailto:shetty@mit.edu">shetty@mit.edu</a></div>
+        </div>
+      </div>
+    </section>
 
-    <div class="schedule-day">
-      <h3>Tuesday, June 23</h3>
-      <ul>
-        <li>Talk by <a href="https://paulfchristiano.com/">Paul Christiano</a> <span class="tbd">(time TBD)</span></li>
-        <li>Talk by <a href="https://www.cs.columbia.edu/~mchrist/">Miranda Christ</a> <span class="tbd">(time TBD)</span></li>
-      </ul>
-    </div>
+    <hr class="divider">
 
-    <div class="schedule-day">
-      <h3>Wednesday, June 24</h3>
-      <ul>
-        <li>Talk by <a href="https://dwork.seas.harvard.edu/">Cynthia Dwork</a> <span class="tbd">(time TBD)</span></li>
-        <li>Talk by <a href="https://people.eecs.berkeley.edu/~gunn/">Sam Gunn</a> <span class="tbd">(time TBD)</span></li>
-      </ul>
-    </div>
-  </section>
+    <section id="schedule">
+      <h2>Schedule</h2>
+
+      <div class="schedule-day">
+        <div class="day-header">Monday, June 22</div>
+        <ul class="schedule-items">
+          <li class="schedule-item">
+            <div class="schedule-item-dot"></div>
+            <div class="schedule-item-text">
+              Tutorial <span class="tbd">time TBD</span>
+            </div>
+          </li>
+          <li class="schedule-item">
+            <div class="schedule-item-dot"></div>
+            <div class="schedule-item-text">
+              Talk by <a href="https://andrewilyas.com/" class="speaker-link">Andrew Ilyas</a>
+              <span class="tbd">time TBD</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="schedule-day">
+        <div class="day-header">Tuesday, June 23</div>
+        <ul class="schedule-items">
+          <li class="schedule-item">
+            <div class="schedule-item-dot"></div>
+            <div class="schedule-item-text">
+              Talk by <a href="https://paulfchristiano.com/" class="speaker-link">Paul Christiano</a>
+              <span class="tbd">time TBD</span>
+            </div>
+          </li>
+          <li class="schedule-item">
+            <div class="schedule-item-dot"></div>
+            <div class="schedule-item-text">
+              Talk by <a href="https://www.cs.columbia.edu/~mchrist/" class="speaker-link">Miranda Christ</a>
+              <span class="tbd">time TBD</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="schedule-day">
+        <div class="day-header">Wednesday, June 24</div>
+        <ul class="schedule-items">
+          <li class="schedule-item">
+            <div class="schedule-item-dot"></div>
+            <div class="schedule-item-text">
+              Talk by <a href="https://dwork.seas.harvard.edu/" class="speaker-link">Cynthia Dwork</a>
+              <span class="tbd">time TBD</span>
+            </div>
+          </li>
+          <li class="schedule-item">
+            <div class="schedule-item-dot"></div>
+            <div class="schedule-item-text">
+              Talk by <a href="https://people.eecs.berkeley.edu/~gunn/" class="speaker-link">Sam Gunn</a>
+              <span class="tbd">time TBD</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+  </main>
 
 </body>
 </html>
