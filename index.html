@@ -36,19 +36,6 @@
       background: var(--bg);
     }
 
-    /* Construction banner */
-    .banner-construction {
-      background: #fffbeb;
-      border-bottom: 1px solid #f0c040;
-      text-align: center;
-      padding: 10px 20px;
-      font-family: "Inter", sans-serif;
-      font-size: 13.5px;
-      color: #7a5a00;
-      letter-spacing: 0.01em;
-    }
-    .banner-construction strong { font-weight: 600; }
-
     /* Top nav bar */
     .topbar {
       background: var(--navy);
@@ -256,23 +243,65 @@
       flex: 1;
       font-family: "Source Serif 4", Georgia, serif;
     }
+    .talk-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .talk-title {
+      font-family: "Inter", sans-serif;
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text);
+      margin-top: 4px;
+    }
+    .talk-abstract {
+      margin-top: 9px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .talk-abstract summary {
+      cursor: pointer;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--accent);
+    }
+    .talk-abstract summary:hover {
+      text-decoration: underline;
+    }
+    .talk-abstract summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+    .talk-abstract-body {
+      margin-top: 8px;
+    }
+    .talk-abstract-body p {
+      margin-bottom: 10px;
+      color: inherit;
+    }
+    .talk-abstract-body p:last-child {
+      margin-bottom: 0;
+    }
     .speaker-link {
       font-weight: 600;
     }
-    .tbd {
+    .talk-time {
       font-family: "Inter", sans-serif;
       font-size: 12.5px;
-      color: #9aa0ab;
+      color: var(--text-muted);
       font-style: normal;
       margin-left: 6px;
     }
   </style>
 </head>
 <body>
-
-  <div class="banner-construction">
-    <strong>&#9888; This page is under construction.</strong>&ensp;Details will be updated as they become available.
-  </div>
 
   <nav class="topbar">
     <div class="topbar-inner">
@@ -356,14 +385,29 @@
           <li class="schedule-item">
             <div class="schedule-item-dot"></div>
             <div class="schedule-item-text">
-              Tutorial <span class="tbd">time TBD</span>
+              <div class="talk-heading">
+                Tutorial by <a href="https://noahgol.github.io" class="speaker-link">Noah Golowich</a>,
+                <a href="https://aliu42.github.io/" class="speaker-link">Allen Liu</a>, and
+                <a href="https://ashettyv.github.io/" class="speaker-link">Abhishek Shetty</a>
+                <span class="talk-time">8:30&ndash;9:30am MDT</span>
+              </div>
+              <div class="talk-title">Tutorial on Language Models and Generative AI</div>
             </div>
           </li>
           <li class="schedule-item">
             <div class="schedule-item-dot"></div>
             <div class="schedule-item-text">
-              Talk by <a href="https://andrewilyas.com/" class="speaker-link">Andrew Ilyas</a>
-              <span class="tbd">time TBD</span>
+              <div class="talk-heading">
+                Talk by <a href="https://andrewilyas.com/" class="speaker-link">Andrew Ilyas</a>
+                <span class="talk-time">9:30&ndash;10:30am MDT</span>
+              </div>
+              <div class="talk-title">Predictive models for AI systems</div>
+              <details class="talk-abstract">
+                <summary>Abstract</summary>
+                <div class="talk-abstract-body">
+                  <p>Building AI systems entails making a number of extraordinarily high-dimensional design choices, such as what data to train on, what hyperparameters to use, and how to order training data. A natural stepping stone towards trustworthy AI systems is to be able to predict how these design choices affect model behavior. In particular, predictibility enables us to design targeted interventions that steer our systems towards desirable behavior. In this talk, we will discuss a family of approaches towards building predictive models of AI systems, with applications to data selection, data editing, and privacy auditing.</p>
+                </div>
+              </details>
             </div>
           </li>
         </ul>
@@ -375,15 +419,35 @@
           <li class="schedule-item">
             <div class="schedule-item-dot"></div>
             <div class="schedule-item-text">
-              Talk by <a href="https://paulfchristiano.com/" class="speaker-link">Paul Christiano</a>
-              <span class="tbd">time TBD</span>
+              <div class="talk-heading">
+                Talk by <a href="https://paulfchristiano.com/" class="speaker-link">Paul Christiano</a>
+                <span class="talk-time">8:30&ndash;9:30am MDT</span>
+              </div>
+              <div class="talk-title">Theoretical approaches to AI alignment</div>
+              <details class="talk-abstract">
+                <summary>Abstract</summary>
+                <div class="talk-abstract-body">
+                  <p>I&rsquo;ll survey a range of theoretically grounded approaches for aligning AI systems with human intent. The first half of the talk will discuss black box methods that use checks and balances to prevent bad behavior. The second half will explore white box methods that leverage model weights to make more accurate predictions about out of distribution behavior. Within each category I&rsquo;ll review a few existing theoretical and empirical results and state some important open problems.</p>
+                </div>
+              </details>
             </div>
           </li>
           <li class="schedule-item">
             <div class="schedule-item-dot"></div>
             <div class="schedule-item-text">
-              Talk by <a href="https://www.cs.columbia.edu/~mchrist/" class="speaker-link">Miranda Christ</a>
-              <span class="tbd">time TBD</span>
+              <div class="talk-heading">
+                Talk by <a href="https://www.cs.columbia.edu/~mchrist/" class="speaker-link">Miranda Christ</a>
+                <span class="talk-time">9:30&ndash;10:30am MDT</span>
+              </div>
+              <div class="talk-title">Pseudorandom Codes and Cryptographic Watermarks for AI-Generated Content</div>
+              <details class="talk-abstract">
+                <summary>Abstract</summary>
+                <div class="talk-abstract-body">
+                  <p>Watermarks involve embedding hidden patterns in AI-generated content to facilitate its detection. Intuitively, it seems inevitable that the stronger the watermark is, the more it must alter the content, leading to quality degradation. However, a recent line of work draws on cryptography to construct watermarks that are both robust to modification of the content, and provably quality-preserving: the watermarked model is computationally indistinguishable from the original model, implying that quality is maintained under any efficiently computable metric.</p>
+                  <p>The key ingredient is a new cryptographic primitive called a pseudorandom error-correcting code, also an interesting theoretical object in its own right. A pseudorandom code is an error-correcting code whose codewords are computationally indistinguishable from uniformly random strings, while still being efficiently decodable from a constant rate of errors.</p>
+                  <p>In this talk, I will survey common approaches to watermarking, focusing on those using pseudorandom codes. I'll end with some open questions that I find interesting, ranging from theory questions about pseudorandom codes to engineering questions that could yield more practical watermarks.</p>
+                </div>
+              </details>
             </div>
           </li>
         </ul>
@@ -395,15 +459,38 @@
           <li class="schedule-item">
             <div class="schedule-item-dot"></div>
             <div class="schedule-item-text">
-              Talk by <a href="https://dwork.seas.harvard.edu/" class="speaker-link">Cynthia Dwork</a>
-              <span class="tbd">time TBD</span>
+              <div class="talk-heading">
+                Talk by <a href="https://dwork.seas.harvard.edu/" class="speaker-link">Cynthia Dwork</a>
+                <span class="talk-time">8:30&ndash;9:30am MDT</span>
+              </div>
+              <div class="talk-title">Equitable Evaluation via Elicitation</div>
+              <details class="talk-abstract">
+                <summary>Abstract</summary>
+                <div class="talk-abstract-body">
+                  <p>Data are not simply given; they are created. Scoring and classification algorithms are trained on, and operate over, representations of individuals obtained via a representation mapping whose design directly affects what is given. This representation is not neutral, even when individuals decide how to represent themselves. For example, on a professional networking platform, individuals with similar qualifications and skills may vary in their outward manner: some tend toward self-promotion while others are modest to the point of omitting crucial information. Comparing the self-descriptions of equally qualified job seekers with different self-presentation styles is therefore problematic.</p>
+                  <p>These differences are often correlated with gender and geography, and women and people from less individualstic cultures are typically advised to &ldquo;speak more like (American) men.&rdquo; In this work, we provide a method for obtaining a more equitable representation mapping via interaction. Specifically, we build a prototype interactive AI for skill elicitation that permits accurate determination of skills while simultaneously allowing individuals to speak in their own voice.</p>
+                  <p>To obtain sufficient training data, we train an LLM to act as synthetic humans.</p>
+                  <p>Joint work with Elbert Du, Lunjia Hu, Reid McIlroy-Young, Han Shao, and Linjun Zhang.</p>
+                </div>
+              </details>
             </div>
           </li>
           <li class="schedule-item">
             <div class="schedule-item-dot"></div>
             <div class="schedule-item-text">
-              Talk by <a href="https://people.eecs.berkeley.edu/~gunn/" class="speaker-link">Sam Gunn</a>
-              <span class="tbd">time TBD</span>
+              <div class="talk-heading">
+                Talk by <a href="https://people.eecs.berkeley.edu/~gunn/" class="speaker-link">Sam Gunn</a>
+                <span class="talk-time">9:30&ndash;10:30am MDT</span>
+              </div>
+              <div class="talk-title">How to sketch a learning algorithm</div>
+              <details class="talk-abstract">
+                <summary>Abstract</summary>
+                <div class="talk-abstract-body">
+                  <p>How does the choice of training data influence an AI model? This question is of central importance to interpretability, privacy, data attribution, and basic science. At its core is the data deletion problem: after a reasonable amount of precomputation, quickly predict how the model would behave if a given subset of training data had been deleted.</p>
+                  <p>I will present a data deletion scheme capable of predicting model outputs to arbitrary precision in the deep learning setting. A bound on the error can be derived from a simple assumption about the stability of the AI model. In contrast to the assumptions made by prior work, ours appears to be fully compatible with deep learning.</p>
+                  <p>We believe that this method opens up a range of new possibilities for theory in AI. For instance, it gives the first machine unlearning scheme with provable security in the deep learning setting.</p>
+                </div>
+              </details>
             </div>
           </li>
         </ul>
